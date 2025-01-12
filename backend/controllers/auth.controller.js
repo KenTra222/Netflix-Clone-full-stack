@@ -4,6 +4,7 @@ export async function signup(req, res) {
     
    try {
       const { email, password, username } = req.body;
+      
       if (!email || !password || !username) {
          return res.status(400).json({success: false, message: " all fields are required"})
       }
@@ -36,8 +37,11 @@ export async function signup(req, res) {
       const newUser = new User({
          email: email,
          password: password,
-         username: username
+         username: username,
+         image
       })
+
+      //postman
 
       await newUser.save()
 
